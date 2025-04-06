@@ -69,7 +69,7 @@ def sizelist():
 # Saves the neural networks layers to be loaded in a new session or to be used as checkpoints.
 # Each weightlayer and biaslayer gets saved in a seperate file
 def savenetwork(printpath):
-    folder_path = "layers/"
+    folder_path = "saved_network/"
     for file in os.listdir(folder_path):    
         file_path = os.path.join(folder_path, file)
         if printpath == True:
@@ -85,8 +85,8 @@ def savenetwork(printpath):
 # (Each weight- and biaslayer is saved as a numpy array)
 def filesave(name,matrix,printpath):
     if printpath == True:
-        print('Saving: "layers/'+str(name)+'.npy"')
-    np.save("layers/"+str(name),matrix)
+        print('Saving: "saved_network/'+str(name)+'.npy"')
+    np.save("saved_network/"+str(name),matrix)
 
 # Loads all the image data and labels for each element in either the training dataset or the test dataset
 def load_images_ubyte(type):
@@ -151,12 +151,12 @@ def initialize_layers():
         missing = []
         for name in name_list:
             try:
-                globals()[name] = np.load("layers/"+name+".npy")
+                globals()[name] = np.load("saved_network/"+name+".npy")
                 loaded +=1
                 found.append(name)
-                print('Loaded: "layers/'+name+'.npy"')
+                print('Loaded: "saved_network/'+name+'.npy"')
             except:
-                print('No array saved at location: "layers/'+name+'.npy"')
+                print('No array saved at location: "saved_network/'+name+'.npy"')
                 missing.append(name)
 
         # The following tells the user if the saved network has less layers than specified
