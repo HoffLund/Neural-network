@@ -175,6 +175,7 @@ def initialize_layers():
         elif globals()[name_list[-1]].shape[0] != 10:
             print("\nThe saved network has more dimensions than the ",hidden_layers,"hidden layers specified.")
             print("Either change the amount of hidden layers to the correct amount or reset the network.")
+            exit()
 
 
         # Checks if the hiddenlayer_size is the same as the saved network
@@ -183,6 +184,9 @@ def initialize_layers():
             print("The current setting has", hiddenlayer_size,"neurons per layer.")
             print("Either change the hiddenlayer_size variable or set reset_network to True.")
             exit()
+            
+        else:
+            print()
 
     # Reset the network and initializes the weights randomly and the biases as 0
     elif reset_network == True:
@@ -190,10 +194,10 @@ def initialize_layers():
         for i in range(len(layer_sizes)-1):
             globals()[name_list[i]] = np.random.randn(layer_sizes[i+1], layer_sizes[i]) * np.sqrt(2 / layer_sizes[i]) # weights
             globals()[name_list[-i-1]] = np.zeros((layer_sizes[-i-1], 1))            # bias
-    
+
     else:
         print('\nThe variable "reset_network" has a wrong assigned value. It should either be True or False. Please note that "True" will delete and reset all the current assigned weights and biases.')
-    print()
+        exit()
 
 
 # Goes forward in the network. 
@@ -298,7 +302,8 @@ def train():
     if plot_graph == True:
         print("The loss graph is turned on (plot_graph=True)." \
         "\nIt's great for getting an understanding of the training progress." \
-        "\nHowever, be aware that it makes the script up to 4x slower.")
+        "\nHowever, be aware that it makes the script up to 4x slower.\n")
+        
         create_loss_plot()        
     
     # loads all the training images and labels
