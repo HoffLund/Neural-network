@@ -71,7 +71,7 @@ def sizelist():
 def savenetwork(printpath):
     folder_path = "saved_network/"
     for file in os.listdir(folder_path):    
-        file_path = os.path.join(folder_path, file)
+        file_path = os.path.join(currentpath,folder_path, file)
         if printpath == True:
             print("Deleting:",file_path)
         if os.path.isfile(file_path):
@@ -86,12 +86,13 @@ def savenetwork(printpath):
 def filesave(name,matrix,printpath):
     if printpath == True:
         print('Saving: "saved_network/'+str(name)+'.npy"')
-    np.save("saved_network/"+str(name),matrix)
+
+    np.save(currentpath+"/saved_network/"+str(name),matrix)
 
 # Loads all the image data and labels for each element in either the training dataset or the test dataset
 def load_images_ubyte(type):
-    image_buf = np.fromfile(file=type+'_images/'+type+'-images.idx3-ubyte',dtype=np.ubyte)[16:]
-    label_buf = np.fromfile(file=type+'_images/'+type+'-labels.idx1-ubyte',dtype=np.ubyte)[8:]
+    image_buf = np.fromfile(file=(currentpath+"/"+type+'_images/'+type+'-images.idx3-ubyte'),dtype=np.ubyte)[16:]
+    label_buf = np.fromfile(file=(currentpath+"/"+type+'_images/'+type+'-labels.idx1-ubyte'),dtype=np.ubyte)[8:]
 
     num_images = len(label_buf)    
 
@@ -122,7 +123,6 @@ def show_image(image_matrix, prediction, correct):
 # network isn't overfitting to the training data. When this score drops it's an indicator
 # that the network has hit the overfitting point and its time to stop the training.
 def evaluate():
-    evaluate_start = time.time()
     rawdata, imagedata, labelbuf, num_images = load_images_ubyte("test")
     loss = 0
     for i in range(num_images):
@@ -380,5 +380,6 @@ def train():
         for i in range(layersizes()[1]):
             show_image(globals()["weightlayer1"][i],"",i)
 
-
+# needed to be able to find the path of subfiles
+currentpath = os.path.dirname(os.path.abspath(__file__))
 train()
