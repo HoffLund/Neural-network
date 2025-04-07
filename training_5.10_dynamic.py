@@ -69,9 +69,9 @@ def sizelist():
 # Saves the neural networks layers to be loaded in a new session or to be used as checkpoints.
 # Each weightlayer and biaslayer gets saved in a seperate file
 def savenetwork(printpath):
-    folder_path = "saved_network/"
+    folder_path = os.path.join(currentpath,"saved_network/")
     for file in os.listdir(folder_path):    
-        file_path = os.path.join(currentpath,folder_path, file)
+        file_path = os.path.join(folder_path, file)
         if printpath == True:
             print("Deleting:",file_path)
         if os.path.isfile(file_path):
