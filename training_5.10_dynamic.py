@@ -151,7 +151,8 @@ def initialize_layers():
         missing = []
         for name in name_list:
             try:
-                globals()[name] = np.load("saved_network/"+name+".npy")
+                path = os.path.join(currentpath,"saved_network/"+name+".npy")
+                globals()[name] = np.load(path)
                 loaded +=1
                 found.append(name)
                 print('Loaded: "saved_network/'+name+'.npy"')
