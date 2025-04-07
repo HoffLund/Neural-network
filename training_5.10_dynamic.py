@@ -363,7 +363,7 @@ def train():
         loss_, percentage = evaluate()
 
         # Prints the training time for the epoch and the classifying percentage for the neural network    
-        print(f"Epoch {epoch}/\t[{fractions*'#'+(str_len-fractions)*'.'}] {round(percent_*100,1)}%\t  Runtime: {round(time.time()-epoch_start,2)}s  \tClassifying percentage (on test data): {percentage}%     \tNetwork saved✔️{' '*50}")
+        print(f"Epoch {epoch}/\t[{fractions*'#'+(str_len-fractions)*'.'}] {round(percent_*100,1)}%\t  Runtime: {round(time.time()-epoch_start,2)}s  \tClassifying percentage (on test data): {percentage}%     \tNetwork saved✔️")
         
         # If the neural networks begins to perform worse on the evaluation dataset
         # it's an indication that the script is overfitting to the training data
@@ -384,3 +384,5 @@ def train():
 # needed to be able to find the path of subfiles
 currentpath = os.path.dirname(os.path.abspath(__file__))
 train()
+plt.ioff()
+plt.show()
