@@ -1,5 +1,5 @@
-# Neural-network
-Neural network to recognize digits from the MNIST dataset. It's build from absolute scratch without libraries such as tensorflow or pytorch. It was part of my SRP project in high school
+# Neural-network to recognize handwritten digits
+This was part of my SRP project in high school. I was put to task with explaing all the math behind neural networks and creating a neural network to recognize handwritten digits. The network is therefore build without common libraries such as tensorflow or pytorch as that would ruin the whole point.
 
 # How to use and run the script(s)
 These scripts are designed to be run by you! That way you can see an ai in the form of a neural network be trained in real time. 
@@ -16,11 +16,11 @@ This option is free, but may require you to log into your google account. Howeve
 
 
 # How is it built up?
-While libraries such as Tensorflow and Pytorch basicly are used as default in machine learning, this would ruin the point of the project. I therefore built the scripts up from scratch without such libraries to help with data management, layer handling and execution of backpropagation. I did this to show that the math behind neural networks and artificial intelligence is not that complicated.
+While libraries such as Tensorflow and Pytorch basicly are used as default in machine learning, this would ruin the point of the project. I therefore built the scripts up from scratch without such libraries to help with data management, layer handling and execution of backpropagation. I did this to show that the math behind neural networks and artificial intelligence is not that complicated and can be implemented pretty easily.
 
 
 # Static and dynamic layers
 What does that exactly mean? In my paper (written in danish however) I explain it in depth, but here is a brief explanation. 
-When you make a neural network either on amateur scale or industrial scale you typically (very few exeptions where you do not) decide how many layers and the size of them beforehand. A generel rule of thumb is that more layers means better performance. The reason is that when you train the network and give it feedback you do backpropagation. This includes taking partial derivatives of the current layer with respect to the previous layer. Although this derivative changes depending on which layers you are taking the derivative of, what size the layers have and what functions were used in forward propagation.
+When you make a neural network either on amateur scale or industrial scale you typically (very few exeptions where you do not) decide how many layers you want and the size of them beforehand. A generel rule of thumb is that more layers means better performance. The reason is that when you train the network and give it feedback you do backpropagation. This includes taking partial derivatives of the current layer with respect to the previous layers. Although this derivative changes depending on which layers you are taking the derivative of, what size the layers have and what functions were used in forward propagation.
 
 However, there is a pattern in all the partial derivatives (except the last layer) that can be split into two main categories: weight-derivatives and bias-derivatives. This pattern can be seen when looking at the backpropagation function in the training_5.xx_(static)_simple.py script. This pattern can then be used to calculate all the layers dynamicly no matter how many hidden layers there are. The minimum total layers will always be two, because there needs to be and input- and output-layer. But yes! You can actually have zero hidden layers. And you might wonder how bad the network performs? Well actually not that bad. When trained with 8 epochs (time of overfitting) it had a classification percentage of a little over 92%.
