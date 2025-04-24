@@ -14,7 +14,7 @@ While the dynamic version gives you way more options to play with, it can be a b
 ## Option 2 - running in a Google Colab notebook:
 This option is free, but may require you to log into your google account. However, that means you don't have to download any files to your computer. This makes it way easier to run, but at the cost of way less functions in the script as Google Colab is tricky to get continously updating output to work without it taking a 1000 years to execute.
 You just click on the "Colab_training_5_xx.ipynb" file and then click on the link in the top of the file that says "Open in Colab". This will the notebook in Colab.
-After logging in you are ready to run the script. This is done by clicking the playbutton ▶️ emoji in in the left of each cell in chronological order.
+After logging in you are ready to run the script. This is done by clicking the playbutton ▶️ icon in the left of each code-cell in chronological order.
 The last cell only has the code "train()" which will start the training of the network.
 
 
